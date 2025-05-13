@@ -1,48 +1,55 @@
-# Astro Starter Kit: Basics
+# 🔐 Astro Auth con Firebase (Google Login + Rutas Protegidas)
 
-```sh
-npm create astro@latest -- --template basics
-```
+Este proyecto es una práctica básica que hice para aprender a implementar
+**autenticación de usuarios** en una aplicación hecha con **Astro**. Utilicé
+**Firebase Authentication** para el inicio de sesión con **Google** y añadí un
+sistema de **protección de rutas** para que algunas páginas solo sean accesibles
+si el usuario ha iniciado sesión.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ✨ ¿Qué incluye este proyecto?
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- Login con Google usando **Firebase Authentication**
+- Redirección después del login
+- Middleware de Astro para proteger rutas
+- Uso de `Locals` en Astro (`type.d.ts`) para guardar información del usuario
+- Página protegida (`/protected`) que solo se puede ver si estás autenticado
+- Control de sesión básico en el lado del servidor
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Tecnologías usadas
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Astro
+- Firebase (Authentication)
+- Astro middleware
+- TypeScript
+- Tailwind CSS
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## 📄 Notas importantes
 
-All commands are run from the root of the project, from a terminal:
+- Usé un `middleware.ts` para validar si el usuario tiene sesión antes de
+  acceder a ciertas rutas.
+- En `type.d.ts` extendí el tipo `Locals` de Astro para incluir los datos del
+  usuario.
+- Guardé información básica del usuario (como `name`, `photoURL`, etc.) después
+  del login.
+- La ruta `/login` permite iniciar sesión con Google y después redirige a
+  `/protected`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
+## 🚀 ¿Para qué me servirá en el futuro?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Este proyecto me sirve como base si quiero agregar autenticación de usuarios en
+futuras aplicaciones hechas con Astro. También me ayudó a entender mejor cómo
+manejar sesiones, proteger rutas y trabajar con Firebase en un entorno moderno y
+sencillo.
+
+---
+
+> 📝 _Este README es breve porque solo es una práctica, pero suficiente para
+> recordarme lo que hice dentro de unos meses._
