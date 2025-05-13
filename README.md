@@ -1,21 +1,38 @@
 # 🔐 Astro Auth con Firebase (Google Login + Rutas Protegidas)
 
+🚀 **Demo en vivo**:
+[https://astro-autentication-v1.netlify.app](https://astro-autentication-v1.netlify.app)
+
 Este proyecto es una práctica básica que hice para aprender a implementar
-**autenticación de usuarios** en una aplicación hecha con **Astro**. Utilicé
-**Firebase Authentication** para el inicio de sesión con **Google** y añadí un
-sistema de **protección de rutas** para que algunas páginas solo sean accesibles
-si el usuario ha iniciado sesión.
+**autenticación de usuarios** en **Astro**, usando **Firebase Authentication**
+con login mediante **Google**. También implementé la protección de rutas para
+que solo usuarios autenticados puedan acceder a ciertas páginas.
 
 ---
 
 ## ✨ ¿Qué incluye este proyecto?
 
-- Login con Google usando **Firebase Authentication**
-- Redirección después del login
-- Middleware de Astro para proteger rutas
-- Uso de `Locals` en Astro (`type.d.ts`) para guardar información del usuario
-- Página protegida (`/protected`) que solo se puede ver si estás autenticado
-- Control de sesión básico en el lado del servidor
+- ✅ Login con Google usando Firebase Authentication.
+- ✅ Middleware de Astro para proteger rutas (archivo `middleware.ts`).
+- ✅ Definición del tipo `Locals` en `type.d.ts` para guardar datos del usuario
+  (como el nombre y la foto).
+- ✅ Página protegida `/protected` que solo es accesible si estás autenticado.
+- ✅ Redirección automática:
+  - Si **no estás autenticado**, no puedes entrar a `/protected`, te redirige a
+    `/login`.
+  - Si **ya estás autenticado**, no puedes entrar a `/login`, te redirige a
+    `/protected`.
+- ✅ Botón para cerrar sesión (`logout`) disponible en la zona protegida.
+
+---
+
+## 👤 Registro y login
+
+- Para iniciar sesión, ve a
+  [`/login`](https://astro-autentication-v1.netlify.app/login).
+- Si no tienes una cuenta, haz clic en el **enlace de "Registrarme"** que
+  aparece en la pantalla de login.
+- El login se hace mediante **Google**, usando `signInWithPopup` de Firebase.
 
 ---
 
@@ -23,33 +40,33 @@ si el usuario ha iniciado sesión.
 
 - Astro
 - Firebase (Authentication)
-- Astro middleware
+- Astro Middleware
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS (para estilos rápidos)
 
 ---
 
-## 📄 Notas importantes
+## 🧠 Notas para mi yo del futuro
 
-- Usé un `middleware.ts` para validar si el usuario tiene sesión antes de
-  acceder a ciertas rutas.
-- En `type.d.ts` extendí el tipo `Locals` de Astro para incluir los datos del
-  usuario.
-- Guardé información básica del usuario (como `name`, `photoURL`, etc.) después
-  del login.
-- La ruta `/login` permite iniciar sesión con Google y después redirige a
-  `/protected`.
-
----
-
-## 🚀 ¿Para qué me servirá en el futuro?
-
-Este proyecto me sirve como base si quiero agregar autenticación de usuarios en
-futuras aplicaciones hechas con Astro. También me ayudó a entender mejor cómo
-manejar sesiones, proteger rutas y trabajar con Firebase en un entorno moderno y
-sencillo.
+- 🔒 Las rutas están protegidas usando middleware.
+- La sesión del usuario se guarda en `locals.user` dentro de Astro.
+- Para cambiar el comportamiento de redirección, edita el archivo
+  `middleware.ts`.
+- Las redirecciones funcionan usando `window.location.replace(...)` después del
+  login.
+- Los datos como `photoURL` y `name` se obtienen directamente desde las
+  credenciales de Firebase.
+- Puedes extender esto en el futuro para usar Firestore, JWTs o cookies para
+  sesiones más persistentes.
 
 ---
 
-> 📝 _Este README es breve porque solo es una práctica, pero suficiente para
-> recordarme lo que hice dentro de unos meses._
+## 📄 Estado del proyecto
+
+Este proyecto es solo una práctica personal. No está pensado para producción,
+pero sirve como base para futuras apps con autenticación en Astro.
+
+---
+
+📝 _Creado para aprender y recordar lo básico sobre autenticación con Astro +
+Firebase._

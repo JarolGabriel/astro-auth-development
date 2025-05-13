@@ -9,7 +9,13 @@ if (!isLoggeIn || !user){
 }
 
 
-const {avatar, email, emailVerified, name} = user
+const {avatar, email,  name} = user
+
+const firebaseUser = firebase.auth.currentUser
+
+await firebaseUser?.reload()
+
+const {emailVerified} = firebaseUser!
 
 ---
 
